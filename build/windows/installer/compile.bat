@@ -14,6 +14,9 @@ set DEPS64=%~7
 if [%INNOPATH%]==[] (
 FOR /F "usebackq tokens=5,* skip=2" %%A IN (`REG QUERY "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\Inno Setup 6_is1" /v "Inno Setup: App Path" /reg:32`) DO set INNOPATH=%%B
 )
+if [%INNOPATH%]==[] (
+FOR /F "usebackq tokens=5,* skip=2" %%A IN (`REG QUERY "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Uninstall\Inno Setup 6_is1" /v "Inno Setup: App Path" /reg:32`) DO set INNOPATH=%%B
+)
 if not exist "%INNOPATH%\iscc.exe" goto noinno
 
 ::i'd use %*, but shift has no effect on it
