@@ -2,6 +2,8 @@
 
 set -e
 
+echo "MSYSTEM: '$MSYSTEM'"
+
 if [[ "$MSYSTEM" == "MINGW32" ]]; then
     export ARTIFACTS_SUFFIX="-w32"
     export MSYS2_ARCH="i686"

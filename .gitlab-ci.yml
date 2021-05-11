@@ -457,10 +457,8 @@ win-installer-nightly:
     #- gimp-w64
   script:
     - C:\msys64\usr\bin\pacman --noconfirm -Syyuu
-    - set MSYSTEM=MINGW64
-    - C:\msys64\usr\bin\bash -lc "bash -x ./build/windows/gitlab-ci/package-gimp-msys2.sh"
-    - set MSYSTEM=MINGW32
-    - C:\msys64\usr\bin\bash -lc "bash -x ./build/windows/gitlab-ci/package-gimp-msys2.sh"
+    - C:\msys64\usr\bin\bash -lc "MSYSTEM=MINGW64 bash -x ./build/windows/gitlab-ci/package-gimp-msys2.sh"
+    - C:\msys64\usr\bin\bash -lc "MSYSTEM=MINGW32 bash -x ./build/windows/gitlab-ci/package-gimp-msys2.sh"
     - C:\msys64\usr\bin\bash -lc "bash -x ./build/windows/gitlab-ci/installer-gimp-msys2.sh"
 
   needs: ["gimp-win32-native", "gimp-win64-native"]
