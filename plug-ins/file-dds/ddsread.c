@@ -131,10 +131,11 @@ read_dds (GFile          *file,
   GList             *layers;
   GimpImageBaseType  type;
   GimpPrecision      precision;
-  gboolean           read_mipmaps;
-  gboolean           decode_images;
+  gboolean           read_mipmaps = true;
+  gboolean           decode_images = true;
   gint               i, j;
 
+  /*
   if (interactive)
     {
       gimp_ui_init ("dds");
@@ -147,7 +148,7 @@ read_dds (GFile          *file,
                 "load-mipmaps",  &read_mipmaps,
                 "decode-images", &decode_images,
                 NULL);
-
+  */
   filename = g_file_get_path (file);
   fp = g_fopen (filename, "rb");
   g_free (filename);
