@@ -80,7 +80,7 @@ pacman --noconfirm -S --needed \
 # XXX We've got a weird error when the prefix is in the current dir.
 # Until we figure it out, this trick seems to work, even though it's
 # completely ridiculous.
-mv "_install${ARTIFACTS_SUFFIX}" ~
+#mv "_install${ARTIFACTS_SUFFIX}" ~
 
 export GIMP_PREFIX="`realpath ~/_install`${ARTIFACTS_SUFFIX}"
 export PATH="$GIMP_PREFIX/bin:$PATH"
@@ -108,4 +108,4 @@ cd ..
 ccache --show-stats
 
 # XXX Moving back the prefix to be used as artifacts.
-mv "${GIMP_PREFIX}" .
+#mv "${GIMP_PREFIX}" .
