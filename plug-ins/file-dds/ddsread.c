@@ -131,8 +131,8 @@ read_dds (GFile          *file,
   GList             *layers;
   GimpImageBaseType  type;
   GimpPrecision      precision;
-  gboolean           read_mipmaps = true;
-  gboolean           decode_images = true;
+  gboolean           read_mipmaps = TRUE;
+  gboolean           decode_images = TRUE;
   gint               i, j;
 
   /*
