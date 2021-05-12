@@ -251,7 +251,7 @@ gimp-win64-native:
     expire_in: 1 day
     paths:
     - _install-w64
-    - _build-w64
+    #- _build-w64
   cache:
     paths:
     - _ccache/
@@ -297,7 +297,7 @@ gimp-win32-native:
     expire_in: 1 day
     paths:
     - _install-w32
-    - _build-w32
+    #- _build-w32
   cache:
     paths:
     - _ccache/

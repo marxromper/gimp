@@ -37,8 +37,7 @@ rm -f /c/msys64/mingw64/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-png.dl
 # Update everything
 pacman --noconfirm -Suy
 
-# Install the required packages
-pacman --noconfirm -S --needed \
+export PACKAGES=\
     base-devel \
     mingw-w64-$MSYS2_ARCH-binutils \
     mingw-w64-$MSYS2_ARCH-toolchain \
@@ -79,6 +78,9 @@ pacman --noconfirm -S --needed \
     mingw-w64-$MSYS2_ARCH-suitesparse \
     mingw-w64-$MSYS2_ARCH-vala \
     mingw-w64-$MSYS2_ARCH-xpm-nox
+
+# Install the required packages
+pacman --noconfirm -S --needed ${PACKAGES}
 
 export GIMP_PREFIX="`realpath ./_install`${ARTIFACTS_SUFFIX}"
 export PATH="$GIMP_PREFIX/bin:$PATH"
@@ -217,3 +219,6 @@ for dll in ${GIMP_DISTRIB}/lib/gimp/2.99/plug-ins/*/*.exe; do
   python3 build/windows/gitlab-ci/dll_link.py $dll ${GIMP_PREFIX}/ ${GIMP_DISTRIB};
   python3 build/windows/gitlab-ci/dll_link.py $dll ${MSYS_PREFIX}/ ${GIMP_DISTRIB};
 done
+
+# Uninstall the packages to avoid disk space issues in the CI.
+pacman --noconfirm --remove -S ${PACKAGES}
